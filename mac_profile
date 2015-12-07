@@ -33,8 +33,6 @@ PYTHONSTARTUP=$HOME/.pythonrc
 # adding site-packages 
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
 
-# adding slack token
-export SLACK_TOKEN="xoxp-4614652125-7789744081-8178101986-caaa35"
 
 # python shortcut
 alias py=/usr/bin/python
