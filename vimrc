@@ -13,6 +13,21 @@ Plugin 'gmarik/Vundle.vim'
 " tab complete
 Plugin 'ervandew/supertab'
 
+" python syntax
+Plugin 'hdima/python-syntax'
+
+" easy comment out line
+Plugin 'https://github.com/tomtom/tcomment_vim'
+
+" indent help
+" Plugin 'nathanaelkane/vim-indent-guides'
+
+" fuzzy finder
+Plugin 'kien/ctrlp.vim'
+
+" python fullstack
+"Plugin 'klen/python-mode'
+
 " html complete
 Plugin 'mattn/emmet-vim'
 
@@ -20,7 +35,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 
 " c plugin
-Plugin 'vim-scripts/c.vim'
+"Plugin 'vim-scripts/c.vim'
 
 " visual marker plugin
 Plugin 'kshenoy/vim-signature'
@@ -36,6 +51,15 @@ Plugin 'Raimondi/delimitMate'
 
 " JSHint for linting
 Plugin 'amaraxmonika/jshint.vim'
+
+" testing plugins ----
+" directory browser
+Plugin 'scrooloose/nerdtree.git'
+" tmux navigation
+Plugin 'christoomey/vim-tmux-navigator'
+" dockerfile syntax plugin
+Plugin 'ekalinin/Dockerfile.vim'
+" end testing plugins ----
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -89,7 +113,10 @@ let g:loaded_matchparen=1
 
 " Mapping keys k + j to <esc>
 inoremap kj <Esc>
-
+" Trying shift space
+nnoremap <Space> <C-d>
+nnoremap <S-Space> <C-u>
+        
 " setting mouse mode on
 set mouse=a
 
@@ -113,19 +140,26 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " testing new stuff here
 " ---------------------
 " set relative line position numbers
-"set relativenumber
+set relativenumber
 
 " add uppercase to insert mode
 imap <c-u> <esc> viw~ gi
 
 " Testing visible 80th column
-if (exists('+colorcolumn'))
-    set colorcolumn=80
-    highlight ColorColumn ctermbg=9
-endif
+"if (exists('+colorcolumn'))
+    "set colorcolumn=80
+    "highlight ColorColumn ctermbg=9
+
+"endif
+"au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 
 " setting paste mode
 set pastetoggle=<F2>
+
+" setting python syntax on
+let python_highlight_all = 1
+" turn off python folding
+let g:pymode_folding = 0
 
 " faster cmd mode save
 nnoremap ; :
@@ -133,14 +167,23 @@ nnoremap ; :
 " sudo save after file is open
 cmap w!! w !sudo tee % >/dev/null
 
+" Custom leader macros -----
 " adding leader key
 let maplocalleader = "\\"
 let mapleader = "-"
+map <leader>nt :NERDTreeToggle<CR>
 
 " adding easy vimrc split edit
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " Toggle to next window 
 nnoremap gn <C-W><C-W>
+
+"" easy tabbing testing ---------
+nnoremap gh :tabprev<CR>
+nnoremap gl :tabnext<CR>
+nnoremap g0 :tabfirst<CR>
+nnoremap g$ :tablast<CR>
+nnoremap tt :tabe <Space>
 
 " Easy source vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -172,3 +215,4 @@ augroup filetype_vim
 augroup END
 " }}}
 
+" My example functions here
