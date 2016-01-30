@@ -11,16 +11,19 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " tab complete
-Plugin 'ervandew/supertab'
+" Plugin 'ervandew/supertab'
 
 " python syntax
-Plugin 'hdima/python-syntax'
+" Plugin 'hdima/python-syntax'
 
 " easy comment out line
 Plugin 'https://github.com/tomtom/tcomment_vim'
 
 " indent help
 " Plugin 'nathanaelkane/vim-indent-guides'
+
+" syntax
+Plugin 'https://github.com/Valloric/YouCompleteMe.git'
 
 " fuzzy finder
 Plugin 'kien/ctrlp.vim'
@@ -41,10 +44,10 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'kshenoy/vim-signature'
 
 " plugin for php qa
-Bundle 'joonty/vim-phpqa.git'
+" Bundle 'joonty/vim-phpqa.git'
 
 " auto tags
-Plugin 'joonty/vim-taggatron'
+" Plugin 'joonty/vim-taggatron'
 
 " Auto closing brackets
 Plugin 'Raimondi/delimitMate'
@@ -141,6 +144,8 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " ---------------------
 " set relative line position numbers
 set relativenumber
+set number
+highlight CursorLineNr ctermfg=1
 
 " add uppercase to insert mode
 imap <c-u> <esc> viw~ gi
@@ -155,6 +160,9 @@ imap <c-u> <esc> viw~ gi
 
 " setting paste mode
 set pastetoggle=<F2>
+
+" testing fast tty
+set ttyfast
 
 " setting python syntax on
 let python_highlight_all = 1
@@ -183,7 +191,7 @@ nnoremap gh :tabprev<CR>
 nnoremap gl :tabnext<CR>
 nnoremap g0 :tabfirst<CR>
 nnoremap g$ :tablast<CR>
-nnoremap tt :tabe <Space>
+nnoremap tt :tabe<Space>
 
 " Easy source vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
