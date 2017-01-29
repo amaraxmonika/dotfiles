@@ -8,19 +8,11 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
+" active plugins -----------------------------------------------
 Plugin 'gmarik/Vundle.vim'
-
-" tab complete
-" Plugin 'ervandew/supertab'
-
-" python syntax
-" Plugin 'hdima/python-syntax'
 
 " easy comment out line
 Plugin 'https://github.com/tomtom/tcomment_vim'
-
-" indent help
-" Plugin 'nathanaelkane/vim-indent-guides'
 
 " syntax
 Plugin 'https://github.com/Valloric/YouCompleteMe.git'
@@ -28,26 +20,14 @@ Plugin 'https://github.com/Valloric/YouCompleteMe.git'
 " fuzzy finder
 Plugin 'kien/ctrlp.vim'
 
-" python fullstack
-"Plugin 'klen/python-mode'
-
 " html complete
 Plugin 'mattn/emmet-vim'
 
 " javascript
 Plugin 'pangloss/vim-javascript'
 
-" c plugin
-"Plugin 'vim-scripts/c.vim'
-
 " visual marker plugin
 Plugin 'kshenoy/vim-signature'
-
-" plugin for php qa
-" Bundle 'joonty/vim-phpqa.git'
-
-" auto tags
-" Plugin 'joonty/vim-taggatron'
 
 " Auto closing brackets
 Plugin 'Raimondi/delimitMate'
@@ -55,19 +35,53 @@ Plugin 'Raimondi/delimitMate'
 " JSHint for linting
 Plugin 'amaraxmonika/jshint.vim'
 
-" testing plugins ----
 " directory browser
 Plugin 'scrooloose/nerdtree.git'
+
 " tmux navigation
 Plugin 'christoomey/vim-tmux-navigator'
+
 " dockerfile syntax plugin
 Plugin 'ekalinin/Dockerfile.vim'
-" end testing plugins ----
+
+" test plugins below 
+" vim tmux testing integration 
+Plugin 'benmills/vimux'
+
+" color syntax
+Plugin 'dikiaap/minimalist'
+
+" vim ack for search
+Plugin 'mileszs/ack.vim'
+
+" end test plugins
+
+" inactive plugins ---------------------------------------------
+" plugin for php qa
+" Bundle 'joonty/vim-phpqa.git'
+
+" auto tags
+" Plugin 'joonty/vim-taggatron'
+
+" tab complete
+" Plugin 'ervandew/supertab'
+
+" python syntax
+" Plugin 'hdima/python-syntax'
+
+" python fullstack
+"Plugin 'klen/python-mode'
+
+" c plugin
+"Plugin 'vim-scripts/c.vim'
+
+" indent help
+" Plugin 'nathanaelkane/vim-indent-guides'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -110,6 +124,10 @@ set hls
 " Change colorscheme from default to delek
 
 " colorscheme delek
+" setting colorcolumn at 80
+" let &colorcolumn=join(range(81,999), ",")
+" highlight ColorColumn ctermbg=235 guibg=#2c2d27
+
 
 " Turn off bracket highlighting
 let g:loaded_matchparen=1
@@ -131,6 +149,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" setting file specific tabs/space
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
 " setting clipboard
 "set clipboard=unnamed
 
@@ -140,29 +161,30 @@ set backspace+=start,eol,indent
 " turning off auto comment
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" testing new stuff here
-" ---------------------
 " set relative line position numbers
 set relativenumber
 set number
+" display at least 3 lines when scrolling
+set scrolloff=3 
+
+" setting cursor color
 highlight CursorLineNr ctermfg=1
+
+" set highlight color
+highlight Visual ctermbg=8
+
+" opens nerdtree if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " add uppercase to insert mode
 imap <c-u> <esc> viw~ gi
-
-" Testing visible 80th column
-"if (exists('+colorcolumn'))
-    "set colorcolumn=80
-    "highlight ColorColumn ctermbg=9
-
-"endif
-"au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 
 " setting paste mode
 set pastetoggle=<F2>
 
 " testing fast tty
-set ttyfast
+" set ttyfast
 
 " setting python syntax on
 let python_highlight_all = 1
@@ -181,12 +203,20 @@ let maplocalleader = "\\"
 let mapleader = "-"
 map <leader>nt :NERDTreeToggle<CR>
 
+"vimux keys
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+let VimuxUseNearest = 0
+
 " adding easy vimrc split edit
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" tab and window nav---------------------------------------------
+
 " Toggle to next window 
 nnoremap gn <C-W><C-W>
 
-"" easy tabbing testing ---------
+"" easy tabbing 
 nnoremap gh :tabprev<CR>
 nnoremap gl :tabnext<CR>
 nnoremap g0 :tabfirst<CR>
@@ -200,6 +230,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 iabbrev and and
 iabbrev fuction function
 iabbrev fnction function
+iabbrev slef self
 
 " Surround a word with double quotes
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
@@ -224,3 +255,6 @@ augroup END
 " }}}
 
 " My example functions here
+" setting color to use minimalist colorscheme
+set t_Co=256
+" colorscheme minimalist
