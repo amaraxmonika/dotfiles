@@ -49,7 +49,8 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'benmills/vimux'
 
 " color syntax
-Plugin 'dikiaap/minimalist'
+" Plugin 'dikiaap/minimalist'
+Plugin 'morhetz/gruvbox'
 
 " vim ack for search
 Plugin 'mileszs/ack.vim'
@@ -122,8 +123,8 @@ syntax on
 set hls
 
 " Change colorscheme from default to delek
-
-" colorscheme delek
+colorscheme delek
+" colorscheme gruvbox
 " setting colorcolumn at 80
 " let &colorcolumn=join(range(81,999), ",")
 " highlight ColorColumn ctermbg=235 guibg=#2c2d27
@@ -258,3 +259,9 @@ augroup END
 " setting color to use minimalist colorscheme
 set t_Co=256
 " colorscheme minimalist
+
+" Test area for new keybindings
+noremap <up>    <C-W>+
+noremap <down>  <C-W>-
+noremap <left>  3<C-W><
+noremap <right> 3<C-W>>
