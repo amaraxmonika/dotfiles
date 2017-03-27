@@ -260,8 +260,16 @@ augroup END
 set t_Co=256
 " colorscheme minimalist
 
-" Test area for new keybindings
+" Test area for new keybindings ---------------------------------
+" resize panes with arrow keys
 noremap <up>    <C-W>+
 noremap <down>  <C-W>-
 noremap <left>  3<C-W><
 noremap <right> 3<C-W>>
+
+" delete to black hole register instead of print buffer
+nnoremap <Leader>d "_d
+nnoremap <Leader>D "_D
+nnoremap <Leader>C "_C
+nnoremap <Leader>c "_c
+nnoremap <Leader>x "_x
