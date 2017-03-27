@@ -11,3 +11,8 @@ ln -s ./tmux.conf ~/.tmux.conf
 
 echo "Linking vimrc"
 ln -s ./vimrc ~/.vimrc
+
+echo "installing ipython config"
+if [ -d ~/.ipython/profile_default ];
+    cp ./ipython_config.py ~/.ipython/profile_default/
+fi
