@@ -11,6 +11,8 @@ alias nicheknights="ssh nicheknights"
 bindkey -v
 bindkey -M viins 'kj' vi-cmd-mode
 bindkey "^R" history-incremental-search-backward 
+bindkey "^P" up-line-or-history
+bindkey "^N" down-line-or-history
 
 export PATH=$PATH:"/usr/local/lib/mongodb/bin:/Users/chasejohnson/android-sdks/tools:/Users/chasejohnson/android-sdks/platform-tools"
 export PATH=$PATH:"/usr/local/sbin"
@@ -71,5 +73,16 @@ function dkrmi() {
     docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 }
 
+# handy function to list only directories
+function lsd() {
+    ls -F | grep '/'
+}
+
+function myip() {
+    dig +short myip.opendns.com @resolver1.opendns.com
+}
+
 # function calls
 # setup docker env
+
+export PATH="$HOME/.cargo/bin:$PATH"
