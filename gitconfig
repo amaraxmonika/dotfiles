@@ -1,0 +1,24 @@
+[core]
+	user = chasen johnson
+	email = chasen@onepointone.com
+	excludesfile = ~/.gitignore_global
+[user]
+	name = Chasen Johnson
+	email = chasen@onepointone.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[push]
+	default = simple
+[alias]
+	shorty = status --short --branch
+[status]
+	submoduleSummary = true
+[diff]
+	submodule = log
+[rere]
+	enabled = 1
+[credential]
+    # cache login credentials for 24 hours
+	helper = cache --timeout=86400
