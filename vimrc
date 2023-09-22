@@ -15,13 +15,13 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'https://github.com/tomtom/tcomment_vim'
 
 " syntax
-Plugin 'https://github.com/Valloric/YouCompleteMe.git'
+Plugin 'https://github.com/ycm-core/YouCompleteMe.git'
 
 " fuzzy finder
 Plugin 'kien/ctrlp.vim'
 
 " html complete
-Plugin 'mattn/emmet-vim'
+" Plugin 'mattn/emmet-vim'
 
 " javascript
 Plugin 'pangloss/vim-javascript'
@@ -33,7 +33,7 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'Raimondi/delimitMate'
 
 " JSHint for linting
-Plugin 'amaraxmonika/jshint.vim'
+" Plugin 'amaraxmonika/jshint.vim'
 
 " directory browser
 Plugin 'scrooloose/nerdtree.git'
@@ -123,7 +123,7 @@ syntax on
 set hls
 
 " Change colorscheme from default to delek
-colorscheme delek
+" colorscheme delek
 " colorscheme gruvbox
 " setting colorcolumn at 80
 " let &colorcolumn=join(range(81,999), ",")
@@ -260,7 +260,6 @@ augroup END
 set t_Co=256
 " colorscheme minimalist
 
-" Test area for new keybindings ---------------------------------
 " resize panes with arrow keys
 noremap <up>    <C-W>+
 noremap <down>  <C-W>-
@@ -273,3 +272,11 @@ nnoremap <Leader>D "_D
 nnoremap <Leader>C "_C
 nnoremap <Leader>c "_c
 nnoremap <Leader>x "_x
+
+" Test area for new keybindings ---------------------------------
+" No need to use <quote>*p to access system clipboard
+" set clipboard=unnamedplus
+" shows info on the bottom right hand side
+set showcmd
+" Disable swap files
+set noswapfile
